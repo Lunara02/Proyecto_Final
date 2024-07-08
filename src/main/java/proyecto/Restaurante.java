@@ -1,9 +1,6 @@
 package proyecto;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Timer;
+import java.util.*;
 
 public class Restaurante {
     private static Restaurante instance;
@@ -24,5 +21,27 @@ public class Restaurante {
         observers = new ArrayList<>();
         clients_leaves = new Timer();
         clients_finish = new Timer();
+    }
+
+    public void retiradaClientes(Familia familia){
+        clients_leaves.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(!familia.getFamiliaComiendo()){
+                    for(Cliente cl : familia.getIntegrantes()){
+                        if(cocina.getPedido().getCliente() == cl){
+                            cocina.limpiarPedidos();
+                            //falta notif
+                        }
+                    }
+                    for(Mesa mesa: comedor.getMesas()){
+                        if(mesa.getFamilia() == familia){
+                            mesa.desocuparMesa();
+                        }
+                    }
+                    clientes.remove(familia);
+                }
+            }
+        },60000);
     }
 }
