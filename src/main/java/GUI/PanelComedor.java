@@ -65,4 +65,8 @@ public class PanelComedor extends JPanel{
         }
         repaint();
     }
+
+    public  void comenzarTimer(){
+        tiempoJuego.start();
+    }
 }
