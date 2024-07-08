@@ -95,4 +95,8 @@ public class Restaurante {
     public void setDificultad(int dificultad){
         this.dificultad = dificultad;
     }
+
+    public void setCuota(int cuota){
+        this.cuota = cuota;
+    }
 }
