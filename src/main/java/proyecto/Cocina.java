@@ -32,4 +32,8 @@ public class Cocina {
     public void agregarIngredientes(Ingredientes ingredientes){
         cocinado.add(ingredientes);
     }
+
+    public ArrayList<Ingredientes> getCocinado(){
+        return cocinado;
+    }
 }
