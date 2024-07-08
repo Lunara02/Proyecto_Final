@@ -9,28 +9,32 @@ public class Cocina {
     private ArrayList<Ingredientes> cocinado;
     private int puntuacion, completo = 0;
 
-    public Cocina(){
+    public Cocina() {
         pedidos = new ArrayList<>();
         cocinado = new ArrayList<>();
     }
 
-    public void addPedido(Pedido pedido){
+    public void addPedido(Pedido pedido) {
         pedidos.add(pedido);
     }
 
-    public Pedido getPedido(){
+    public Pedido getPedido() {
         return pedidos.getFirst();
     }
 
     public ArrayList<Pedido> getPedidos() throws nullPedidos {
-        if(pedidos.isEmpty()){
+        if (pedidos.isEmpty()) {
             throw new nullPedidos();
         }
         return pedidos;
     }
 
-    public void limpiarPedidos(){
+    public void limpiarPedidos() {
         pedidos.clear();
+    }
+
+    public void limpiarPedido(){
+        pedidos.removeFirst();
     }
 
     public void agregarIngredientes(Ingredientes ingredientes){
