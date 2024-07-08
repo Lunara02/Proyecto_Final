@@ -87,4 +87,8 @@ public class Restaurante {
     public Comedor getComedor(){
         return comedor;
     }
+
+    public Cocina getCocina(){
+        return cocina;
+    }
 }
