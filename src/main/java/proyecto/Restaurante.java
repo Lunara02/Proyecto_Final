@@ -2,7 +2,7 @@ package proyecto;
 
 import java.util.*;
 
-public class Restaurante {
+public class Restaurante extends Observer implements ObservableCustom{
     private static Restaurante instance;
     private Comedor comedor;
     private Cocina cocina;
@@ -27,7 +27,7 @@ public class Restaurante {
         Familia familia = new Familia(dificultad);
         clientes.add(familia);
         sentarFamilia(familia);
-        //falta addobs
+        familia.addObserver(this);
     }
 
     public void retiradaClientes(Familia familia){
@@ -38,7 +38,7 @@ public class Restaurante {
                     for(Cliente cl : familia.getIntegrantes()){
                         if(cocina.getPedido().getCliente() == cl){
                             cocina.limpiarPedidos();
-                            //falta notif
+                            notifyObserversCustom1();
                         }
                     }
                     for(Mesa mesa: comedor.getMesas()){
@@ -72,7 +72,7 @@ public class Restaurante {
                 cocina.addPedido(familia.getIntegrantes().get(i).getPedido());
             }
         }
-        //falta notif
+        notifyObserversCustom();
     }
 
     public void sentarFamilia(Familia familia){
@@ -113,5 +113,28 @@ public class Restaurante {
             instance = new Restaurante();
         }
         return instance;
+    }
+
+    @Override
+    public void update(Familia familia){
+        comiendoClientes(familia);
+    }
+
+    @Override
+    public void addObserver(ObserverCustom o){
+        observers.add(o);
+    }
+
+    @Override
+    public void notifyObserversCustom(){
+        for(ObserverCustom observer : observers){
+            observer.update();
+        }
+    }
+
+    public void notifyObserversCustom1(){
+        for(ObserverCustom observer : observers){
+            observer.update1();
+        }
     }
 }
