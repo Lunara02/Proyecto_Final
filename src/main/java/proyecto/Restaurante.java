@@ -44,4 +44,18 @@ public class Restaurante {
             }
         },60000);
     }
+
+    public void comiendoClientes(Familia familia){
+        clients_finish.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                for(Mesa mesa: comedor.getMesas()){
+                    if(mesa.getFamilia()==familia){
+                        mesa.desocuparMesa();
+                    }
+                }
+                clientes.remove(familia);
+            }
+        },5000);
+    }
 }
