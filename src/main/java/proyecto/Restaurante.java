@@ -23,6 +23,13 @@ public class Restaurante {
         clients_finish = new Timer();
     }
 
+    public void nuevosClientes(){
+        Familia familia = new Familia(dificultad);
+        clientes.add(familia);
+        sentarFamilia(familia);
+        //falta addobs
+    }
+
     public void retiradaClientes(Familia familia){
         clients_leaves.schedule(new TimerTask() {
             @Override
