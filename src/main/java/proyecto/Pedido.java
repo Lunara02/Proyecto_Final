@@ -8,19 +8,19 @@ public class Pedido {
     private Receta receta;
     private Random random;
     private Cliente cl;
-    private int numIngredientes, ingrediente, Tipo;
+    private int numIngredientes, ingrediente, tipo;
 
     /**
      * Constructor para crear un nuevo Pedido con una cantidad aleatoria de ingredientes, dependiendo del tipo y la dificultad.
      *
-     * @param n          El tipo de pedido (1 para hamburguesa, 2 para pizza).
+     * @param tipo El tipo de pedido (1 para hamburguesa, 2 para pizza).
      * @param dificultad La dificultad del juego que afecta la cantidad de ingredientes del pedido.
      */
-    public Pedido(int n, int dificultad) {
+    public Pedido(int tipo, int dificultad) {
         random = new Random();
         receta = new Receta();
         numIngredientes = random.nextInt(3) + dificultad;
-        if(n == 1){
+        if(tipo == 1){
             receta.add(Ingredientes.PAN_ABAJO);
             for(int i=0; i<numIngredientes;i++){
                 ingrediente = random.nextInt(6)+10;
@@ -28,7 +28,7 @@ public class Pedido {
             }
             receta.add(Ingredientes.PAN_ARRIBA);
         }
-        else if(n == 2){
+        else if(tipo == 2){
             receta.add(Ingredientes.MASA);
             for(int i=0; i<numIngredientes;i++){
                 int ingrediente = random.nextInt(7)+ 1;
@@ -37,7 +37,7 @@ public class Pedido {
                 }
             }
         }
-        Tipo = n;
+        this.tipo = tipo;
     }
     /**
      * Obtiene la receta del pedido.
@@ -53,7 +53,7 @@ public class Pedido {
      * @return El tipo de pedido.
      */
     public int getTipo(){
-        return Tipo;
+        return tipo;
     }
     /**
      * Establece el cliente asociado a este pedido.
