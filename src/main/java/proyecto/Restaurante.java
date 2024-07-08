@@ -91,4 +91,8 @@ public class Restaurante {
     public Cocina getCocina(){
         return cocina;
     }
+
+    public void setDificultad(int dificultad){
+        this.dificultad = dificultad;
+    }
 }
