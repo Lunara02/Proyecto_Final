@@ -16,4 +16,13 @@ public class Restaurante {
     private List<ObserverCustom> observers;
     private int dificultad = 0;
     private int cuota = 1000;
+
+    public Restaurante() {
+        comedor = new Comedor(random.nextInt(6) + 4);
+        cocina = new Cocina();
+        clientes = new ArrayList<>();
+        observers = new ArrayList<>();
+        clients_leaves = new Timer();
+        clients_finish = new Timer();
+    }
 }
