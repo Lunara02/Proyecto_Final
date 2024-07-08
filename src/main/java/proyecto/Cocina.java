@@ -28,4 +28,8 @@ public class Cocina {
         }
         return pedidos;
     }
+
+    public void agregarIngredientes(Ingredientes ingredientes){
+        cocinado.add(ingredientes);
+    }
 }
