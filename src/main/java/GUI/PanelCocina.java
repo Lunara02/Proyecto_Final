@@ -38,6 +38,98 @@ public class PanelCocina extends JPanel implements ObserverCustom {
     private int TipoC, TipoP;
 
     public PanelCocina() {
+        
+        CocinaUsuario = new ArrayList<>();
+        PedidoGenerado = new ArrayList<>();
+        Enviar = new Boton(240, 110, 50, 50, 1);
+        Reset = new Boton(240, 30, 50, 50, 1);
+        Hamburguesa = new Boton(50, 520, 100, 100, 1);
+        Pizza = new Boton(160, 520, 100, 100, 1);
+        Tomato = new Boton("tom", Ingredientes.TOMATE, 215, 450, this, CocinaUsuario, 1);
+        lechuga = new Boton("lech", Ingredientes.LECHUGA, 35, 520, this , CocinaUsuario, 1);
+        mayo = new Boton("mayo", Ingredientes.MAYO, 125, 520, this, CocinaUsuario, 1);
+        borgar = new Boton("borga", Ingredientes.HAMBURGUESA, 215, 520, this, CocinaUsuario, 1);
+        palto = new Boton("palto", Ingredientes.PALTA, 35, 590, this , CocinaUsuario, 1);
+        kechu = new Boton("kechu", Ingredientes.KETCHUP, 125, 590, this, CocinaUsuario, 1);
+        panArr = new Boton("panArr", Ingredientes.PAN_ARRIBA, 35, 450, this, CocinaUsuario, 1);
+        panAbj = new Boton("panAbj", Ingredientes.PAN_ABAJO, 125, 450, this, CocinaUsuario, 1);
+        Peperonni = new Boton("peperonni", Ingredientes.PEPERONI, 215, 520, this, CocinaUsuario, 2);
+        Aceitunas = new Boton("aceitunas", Ingredientes.ACEITUNAS, 125, 450, this, CocinaUsuario, 2);
+        champiñones = new Boton("champiñones", Ingredientes.CHAMPIÑONES, 215, 450, this, CocinaUsuario, 2);
+        pimientos = new Boton("pimientos", Ingredientes.PIMIENTOS, 35, 520, this, CocinaUsuario, 2);
+        Albahaca = new Boton("albahaca", Ingredientes.ALBAHACA, 125, 520, this, CocinaUsuario, 2);
+        masa = new Boton("masa", Ingredientes.MASA, 35, 450, this, CocinaUsuario, 2);
+        blanca = new Boton("salsablanca", Ingredientes.BLANCA, 35, 590, this, CocinaUsuario, 2);
+        salsatomate = new Boton("salsatomate", Ingredientes.SALSA, 125, 590, this, CocinaUsuario, 2);
+
+        this.cocina = Restaurante.getInstance().getCocina();
+        setPreferredSize(new Dimension(320, 720));
+        imagenCocina = new ImageIcon(getClass().getClassLoader().getResource("XDDD.png"));
+        this.setLayout(new BorderLayout());
+        this.setLayout(null);
+        colocarImagen(Reset, "return");
+        colocarImagen(Enviar, "enviar");
+        colocarImagen(Hamburguesa, "panAbj");
+        colocarImagen(Pizza, "masa");
+        quitarIngredientes();
+        Restaurante.getInstance().addObserver(this);
+
+        Enviar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    cocina.getPedidos();
+                    if(cocina.Entregar()){
+                        System.out.println("Pedido entregado");
+                        cocina.getPedido().getCliente().clienteComiendo();
+                        cocina.limpiarPedido();
+                        Sonido.playSonido("acierto");
+                        SeleccionBotonesPizzaHamburguesa();
+                        PedidoClientes();
+                    }
+                    else{
+                        Sonido.playSonido("error");
+                        SeleccionBotonesPizzaHamburguesa();
+                    }
+                } catch (nullPedidos a){
+                    JOptionPane.showMessageDialog(null, "No hay pedidos", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+
+        Reset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SeleccionBotonesPizzaHamburguesa();
+            }
+        });
+
+        Hamburguesa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ingredientesHamburguesa();
+                Sonido.playSonido("burger");
+                Hamburguesa.setVisible(false);
+                Pizza.setVisible(false);
+                TipoC = 1;
+            }
+        });
+
+        Pizza.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ingredientesPizza();
+                Sonido.playSonido("pissa");
+                Hamburguesa.setVisible(false);
+                Pizza.setVisible(false);
+                TipoC = 2;
+            }
+        });
+
+        add(Enviar);
+        add(Reset);
+        add(Hamburguesa);
+        add(Pizza);
     }
 
     private void SeleccionBotonesPizzaHamburguesa(){
