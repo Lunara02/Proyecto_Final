@@ -17,4 +17,8 @@ public class Mesa {
             sillas.add(new Silla());
         }
     }
+
+    public ArrayList<Silla> getSillas() {
+        return sillas;
+    }
 }
