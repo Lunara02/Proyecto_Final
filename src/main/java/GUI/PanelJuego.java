@@ -13,6 +13,22 @@ public class PanelJuego extends JPanel {
     private Timer llegada;
     private Timer tiempoJuego;
 
+    public PanelJuego(PanelPrincipal mainFrame) {
+        this.setLayout(new BorderLayout());
+        comedor = new PanelComedor();
+        cocina = new PanelCocina();
+        add(cocina, BorderLayout.CENTER);
+        add(comedor, BorderLayout.WEST);
+        tiempoJuego = new Timer(60 * 1000 * 5, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finalizarJuego();
+                mainFrame.showPanel("Final");
+                repaint();
+            }
+        });
+    }
+    
     public void initialize(){
         llegada = new Timer(6000, new ActionListener() {
             @Override
@@ -25,7 +41,7 @@ public class PanelJuego extends JPanel {
         llegada.start();
         tiempoJuego.start();
     }
-    
+
     public void finalizarJuego(){
         Restaurante.getInstance().getCocina().limpiarPedidos();
         Restaurante.getInstance().getCocina().quitarIngrediente();
