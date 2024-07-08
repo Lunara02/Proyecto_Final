@@ -11,4 +11,10 @@ public class Cliente{
         pedido = new Pedido(pedidoRandom,dificultad);
         pedido.setCliente(this);
     }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+
 }
