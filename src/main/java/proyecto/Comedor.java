@@ -10,4 +10,8 @@ public class Comedor {
             mesas.add(new Mesa(x));
         }
     }
+
+    public ArrayList<Mesa> getMesas(){
+        return mesas;
+    }
 }
