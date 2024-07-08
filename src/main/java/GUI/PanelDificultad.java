@@ -7,7 +7,19 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PanelDificultad extends JPanel{
+/**
+ * La clase PanelDificultad extiende JPanel y maneja la selección de dificultad del juego.
+ *
+ * @autor Sebastian Ignacio Vega Varela
+ */
+public class PanelDificultad extends JPanel {
+    /**
+     * Constructor para crear un PanelDificultad e inicializar sus componentes.
+     * Este constructor configura la interfaz gráfica para seleccionar la dificultad del juego y maneja
+     * los eventos de clic del ratón para cambiar de panel según la dificultad seleccionada.
+     *
+     * @param mainFrame El panel principal que contiene este panel de dificultad.
+     */
     public PanelDificultad(PanelPrincipal mainFrame) {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -39,6 +51,12 @@ public class PanelDificultad extends JPanel{
             }
         });
     }
+
+    /**
+     * Sobrescribe el método paintComponent para dibujar el fondo personalizado del panel.
+     *
+     * @param g El objeto Graphics que se utiliza para dibujar el componente.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
