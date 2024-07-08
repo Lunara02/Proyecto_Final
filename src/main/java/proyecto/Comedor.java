@@ -14,4 +14,13 @@ public class Comedor {
     public ArrayList<Mesa> getMesas(){
         return mesas;
     }
+
+    public boolean sentarFamilia(Familia familia){
+        for(int i=0; i<mesas.size(); i++){
+            if(mesas.get(i).ocuparMesa(familia)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
