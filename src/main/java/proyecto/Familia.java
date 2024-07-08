@@ -18,4 +18,8 @@ public class Familia extends Observer{
             cl.addObserver(this);
         }
     }
+
+    public ArrayList<Cliente> getIntegrantes() {
+        return integrantes;
+    }
 }
