@@ -95,23 +95,38 @@ public class PanelComedor extends JPanel{
                 g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX() + 52, mesas.get(X).getY() + 58, this);
             }
             for(int Y = 0; Y < mesas.get(X).getSillas().size(); Y ++){
-                if( Y == 0 ){
-                    if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() >= 1){
-                        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX() + 52, mesas.get(X).getY() + 58, this);
+                if(!mesas.get(X).getMesaDisponible()){
+                    if (mesas.get(X).getFamilia().getIntegrantes().size() >= 1){
+                        if (mesas.get(X).getFamilia().getFamiliaComiendo()){
+                            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente2.png"))).getImage(), mesas.get(X).getX() + 52, mesas.get(X).getY() + 58, this);
+                        }
+                        else {
+                            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX() + 52, mesas.get(X).getY() + 58, this);
+                        }
                     }
-                }
-                if ( Y == 1 ) {
-                    if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() >= 2){
-                        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX() - 24, mesas.get(X).getY(), this);
+                    if (mesas.get(X).getFamilia().getIntegrantes().size() >= 2){
+                        if (mesas.get(X).getFamilia().getFamiliaComiendo()){
+                            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente2.png"))).getImage(), mesas.get(X).getX() - 24, mesas.get(X).getY(), this);
+                        }
+                        else {
+                            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX() - 24, mesas.get(X).getY(), this);
+                        }
                     }
-                } else if ( Y == 2 ) {
-                    if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() >= 3){
-                        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX()  + 140 - 24, mesas.get(X).getY(), this);
+                    if (mesas.get(X).getFamilia().getIntegrantes().size() >= 3){
+                        if (mesas.get(X).getFamilia().getFamiliaComiendo()){
+                            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente2.png"))).getImage(), mesas.get(X).getX()  + 140 - 24, mesas.get(X).getY(), this);
+                        }
+                        else {
+                            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX()  + 140 - 24, mesas.get(X).getY(), this);
+                        }
                     }
-
-                } else if ( Y == 3 ) {
-                    if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() == 4){
-                        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX()  + 70 - 24, mesas.get(X).getY() - 30, this);
+                    if (mesas.get(X).getFamilia().getIntegrantes().size() == 4){
+                        if (mesas.get(X).getFamilia().getFamiliaComiendo()){
+                            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente2.png"))).getImage(), mesas.get(X).getX()  + 70 - 24, mesas.get(X).getY() - 30, this);
+                        }
+                        else {
+                            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX()  + 70 - 24, mesas.get(X).getY() - 30, this);
+                        }
                     }
                 }
             }
