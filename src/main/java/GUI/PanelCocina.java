@@ -105,4 +105,13 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         Aceitunas.setVisible(true);
         salsatomate.setVisible(true);
     }
+
+    private void colocarImagen(JButton button, String nombre) {
+        try {
+            ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(nombre + ".png"));
+            button.setIcon(icon);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
