@@ -130,4 +130,13 @@ public class PanelCocina extends JPanel implements ObserverCustom {
             JOptionPane.showMessageDialog(null, "Todos los pedidos entregados", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
+    @Override
+    public void update(){
+        PedidoClientes();
+    }
+    public void update1(){
+        PedidoGenerado.clear();
+    }
+
 }
