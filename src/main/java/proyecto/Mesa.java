@@ -21,4 +21,16 @@ public class Mesa {
     public ArrayList<Silla> getSillas() {
         return sillas;
     }
+
+    public boolean ocuparMesa(Familia familia){
+        if(mesaDisponible){
+            for(int i=0;i<familia.getIntegrantes().size();i++){
+                sillas.get(i).ocupar();
+            }
+            mesaDisponible = false;
+            this.familia = familia;
+            return true;
+        }
+        return false;
+    }
 }
