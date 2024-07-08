@@ -27,6 +27,9 @@ public enum Ingredientes {
         this.nombre = nombre;
     }
 
+    public String getNombre() {
+        return this.nombre;
+    }
 
     public String toString() {
         return this.tipo + " " + this.nombre;
