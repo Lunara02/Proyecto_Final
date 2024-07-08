@@ -2,13 +2,23 @@ package proyecto;
 
 public enum Ingredientes {
 
-    PAN_ARRIBA,
-    PAN_ABAJO,
-    TOMATE,
-    LECHUGA,
-    HAMBURGUESA,
-    PALTA,
-    MAYO,
-    KETCHUP;
+    PAN_ARRIBA("hamburguesa", "panArr"),
+    PAN_ABAJO("hamburguesa", "panAbj"),
+    TOMATE("hamburguesa", "tom"),
+    LECHUGA("hamburguesa", "lech"),
+    HAMBURGUESA("hamburguesa", "borga"),
+    PALTA("hamburguesa", "palto"),
+    MAYO("hamburguesa", "mayo"),
+    KETCHUP("hamburguesa", "kechu");
 
+    private String tipo;
+    private String nombre;
+    Ingredientes(String tipo, String nombre) {
+        this.tipo = tipo;
+        this.nombre = nombre;
+    }
+
+    public String toString() {
+        return this.tipo + " " + this.nombre;
+    }
 }
