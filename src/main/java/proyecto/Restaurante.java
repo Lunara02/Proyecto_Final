@@ -107,4 +107,11 @@ public class Restaurante {
     public void limpiarClientes(){
         clientes.clear();
     }
+
+    public static Restaurante getInstance() {
+        if (instance == null) {
+            instance = new Restaurante();
+        }
+        return instance;
+    }
 }
