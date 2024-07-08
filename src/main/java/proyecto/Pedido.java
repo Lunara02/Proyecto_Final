@@ -8,6 +8,7 @@ public class Pedido {
     private Cliente cl;
     private int numIngredientes, ingrediente, Tipo;
 
+
     public Pedido(int n, int dificultad) {
         random = new Random();
         receta = new Receta();
@@ -32,4 +33,19 @@ public class Pedido {
         Tipo = n;
     }
 
+    public Receta getReceta() {
+        return receta;
+    }
+
+    public int getTipo(){
+        return Tipo;
+    }
+
+    public void setCliente(Cliente cl){
+        this.cl = cl;
+    }
+
+    public Cliente getCliente(){
+        return cl;
+    }
 }
