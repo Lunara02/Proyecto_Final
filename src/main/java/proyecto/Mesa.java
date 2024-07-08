@@ -22,9 +22,9 @@ public class Mesa {
         return sillas;
     }
 
-    public boolean ocuparMesa(Familia familia){
-        if(mesaDisponible){
-            for(int i=0;i<familia.getIntegrantes().size();i++){
+    public boolean ocuparMesa(Familia familia) {
+        if (mesaDisponible) {
+            for (int i = 0; i < familia.getIntegrantes().size(); i++) {
                 sillas.get(i).ocupar();
             }
             mesaDisponible = false;
@@ -34,15 +34,15 @@ public class Mesa {
         return false;
     }
 
-    public void desocuparMesa(){
-        for(int i=0; i<sillas.size();i++){
+    public void desocuparMesa() {
+        for (int i = 0; i < sillas.size(); i++) {
             sillas.get(i).desocupar();
         }
         familia = null;
         mesaDisponible = true;
     }
 
-    public boolean getMesaDisponible(){
+    public boolean getMesaDisponible() {
         return mesaDisponible;
     }
 
@@ -50,12 +50,16 @@ public class Mesa {
         return numMesa;
     }
 
-    public Familia getFamilia(){
+    public Familia getFamilia() {
         return familia;
     }
 
     public void setXY(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public int getX() {
+        return x;
     }
 }
