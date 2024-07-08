@@ -18,4 +18,11 @@ public class Musica {
         }
     }
 
+    public void stopMusica() {
+        if (clip != null && clip.isRunning()) {
+            clip.stop();
+            clip.close();
+        }
+    }
+
 }
