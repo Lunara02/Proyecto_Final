@@ -15,4 +15,8 @@ public class Cocina {
     public void addPedido(Pedido pedido){
         pedidos.add(pedido);
     }
+
+    public Pedido getPedido(){
+        return pedidos.getFirst();
+    }
 }
