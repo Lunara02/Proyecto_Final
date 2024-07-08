@@ -2,7 +2,7 @@ package proyecto;
 
 import java.util.*;
 
-public class Familia extends Observer{
+public class Familia extends Observer implements Observable{
     private Random random = new Random();
     private ArrayList<Cliente> integrantes;
     private List<Observer> observers;
@@ -25,5 +25,26 @@ public class Familia extends Observer{
 
     public boolean getFamiliaComiendo(){
         return familiaComiendo;
+    }
+
+    @Override
+    public void update() {
+        integrantesComiendo++;
+        if(integrantesComiendo==integrantes.size()){
+            familiaComiendo=true;
+            notifyObservers();
+        }
+    }
+
+    @Override
+    public void addObserver(Observer o){
+        observers.add(o);
+    }
+
+    @Override
+    public void notifyObservers(){
+        for(Observer observer : observers){
+            observer.update(this);
+        }
     }
 }
