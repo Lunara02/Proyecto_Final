@@ -67,4 +67,13 @@ public class Restaurante {
         }
         //falta notif
     }
+
+    public void sentarFamilia(Familia familia){
+        if(comedor.sentarFamilia(familia)){
+            retiradaClientes(familia);
+        }
+        else{
+            clientes.remove(familia);
+        }
+    }
 }
