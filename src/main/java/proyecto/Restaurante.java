@@ -83,4 +83,8 @@ public class Restaurante {
             clientes.remove(familia);
         }
     }
+
+    public Comedor getComedor(){
+        return comedor;
+    }
 }
