@@ -40,6 +40,15 @@ public class PanelCocina extends JPanel implements ObserverCustom {
     public PanelCocina() {
     }
 
+    private void SeleccionBotonesPizzaHamburguesa(){
+        CocinaUsuario.clear();
+        cocina.quitarIngrediente();
+        Hamburguesa.setVisible(true);
+        Pizza.setVisible(true);
+        quitarIngredientes();
+        repaint();
+    }
+
     private void quitarIngredientes() {
         Tomato.setVisible(false);
         lechuga.setVisible(false);
