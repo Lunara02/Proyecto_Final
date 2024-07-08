@@ -12,4 +12,11 @@ public class PanelJuego extends JPanel {
     private PanelCocina cocina;
     private Timer llegada;
     private Timer tiempoJuego;
+
+    public void finalizarJuego(){
+        Restaurante.getInstance().getCocina().limpiarPedidos();
+        Restaurante.getInstance().getCocina().quitarIngrediente();
+        Restaurante.getInstance().limpiarClientes();
+        llegada.stop();
+    }
 }
