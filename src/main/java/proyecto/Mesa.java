@@ -45,4 +45,8 @@ public class Mesa {
     public boolean getMesaDisponible(){
         return mesaDisponible;
     }
+
+    public int getNumMesa() {
+        return numMesa;
+    }
 }
