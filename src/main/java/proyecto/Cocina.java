@@ -11,4 +11,8 @@ public class Cocina {
         pedidos = new ArrayList<>();
         cocinado = new ArrayList<>();
     }
+
+    public void addPedido(Pedido pedido){
+        pedidos.add(pedido);
+    }
 }
