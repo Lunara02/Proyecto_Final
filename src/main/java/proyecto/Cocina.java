@@ -36,4 +36,8 @@ public class Cocina {
     public ArrayList<Ingredientes> getCocinado(){
         return cocinado;
     }
+
+    public void quitarIngrediente(){
+        cocinado.clear();
+    }
 }
