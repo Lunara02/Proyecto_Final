@@ -42,7 +42,35 @@ public class Boton extends JButton {
         });
     }
 
-   
+    public Boton(String imageName, Ingredientes ingrediente, int x, int y, JPanel cocina, ArrayList<Image> cocinado, int tipo) {
+        this.setBounds(x, y, 70, 60);
+        this.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (ingrediente != null) {
+                        if(tipo == 1){
+                            Restaurante.getInstance().getCocina().agregarIngredientes(ingrediente);
+                            cocinado.add((new ImageIcon(getClass().getClassLoader().getResource(imageName + "2.png"))).getImage());
+
+                        }
+                        if(tipo == 2){
+                            if(!Restaurante.getInstance().getCocina().getCocinado().contains(ingrediente)){
+                                Restaurante.getInstance().getCocina().agregarIngredientes(ingrediente);
+                                cocinado.add((new ImageIcon(getClass().getClassLoader().getResource(imageName + "2.png"))).getImage());
+
+                            }
+                    }
+                }
+                cocina.repaint();
+            }
+        });
+        this.setIcon(new ImageIcon(getClass().getClassLoader().getResource(imageName + ".png")));
+        this.setContentAreaFilled(false);
+        this.setFocusPainted(false);
+        this.setOpaque(false);
+        cocina.add(this);
+    }
+
 
     @Override
     protected void paintComponent(Graphics g) {
