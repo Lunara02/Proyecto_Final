@@ -49,4 +49,8 @@ public class Mesa {
     public int getNumMesa() {
         return numMesa;
     }
+
+    public Familia getFamilia(){
+        return familia;
+    }
 }
