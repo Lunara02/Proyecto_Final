@@ -53,4 +53,9 @@ public class Mesa {
     public Familia getFamilia(){
         return familia;
     }
+
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }
