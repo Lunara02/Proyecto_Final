@@ -58,4 +58,13 @@ public class Restaurante {
             }
         },5000);
     }
+
+    public void tomarPedido(Familia familia){
+        for(int i=0; i<familia.getIntegrantes().size();i++){
+            if(familia.getIntegrantes().get(i).getPedido() != null) {
+                cocina.addPedido(familia.getIntegrantes().get(i).getPedido());
+            }
+        }
+        //falta notif
+    }
 }
