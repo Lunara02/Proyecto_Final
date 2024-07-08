@@ -1,5 +1,7 @@
 package proyecto;
 
+import Excepciones.nullPedidos;
+
 import java.util.*;
 
 public class Cocina {
@@ -18,5 +20,12 @@ public class Cocina {
 
     public Pedido getPedido(){
         return pedidos.getFirst();
+    }
+
+    public ArrayList<Pedido> getPedidos() throws nullPedidos {
+        if(pedidos.isEmpty()){
+            throw new nullPedidos();
+        }
+        return pedidos;
     }
 }
