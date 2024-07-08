@@ -7,4 +7,11 @@ public class Silla {
         ocupada = false;
     }
 
+    public void ocupar() {
+        ocupada = true;
+    }
+
+    public void desocupar() {
+        ocupada = false;
+    }
 }
