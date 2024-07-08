@@ -9,6 +9,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * La clase PanelComedor representa el panel donde se muestra el comedor del restaurante.
+ * Administra la disposición de las mesas, la llegada de clientes y el tiempo de juego.
+ */
 public class PanelComedor extends JPanel{
     private ArrayList<Mesa> mesas;
     private Random random;
@@ -20,6 +24,9 @@ public class PanelComedor extends JPanel{
     private int segundosRestantes = 300;
     private JProgressBar progressBar;
 
+    /**
+     * Constructor que inicializa el panel del comedor con mesas y configuraciones visuales.
+     */
     public PanelComedor() {
         this.comedor = Restaurante.getInstance().getComedor();
         mesas = comedor.getMesas();
@@ -37,7 +44,6 @@ public class PanelComedor extends JPanel{
         progressBar.setBounds(295, 70, 500, 30);
         progressBar.setStringPainted(true);
         this.add(progressBar);
-
 
         tiempoJuego = new Timer(1000, new ActionListener() {
             @Override
@@ -66,10 +72,16 @@ public class PanelComedor extends JPanel{
         repaint();
     }
 
-    public  void comenzarTimer(){
+    /**
+     * Método para iniciar el temporizador del juego.
+     */
+    public void comenzarTimer(){
         tiempoJuego.start();
     }
 
+    /**
+     * Método para dibujar componentes gráficos en el panel del comedor.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

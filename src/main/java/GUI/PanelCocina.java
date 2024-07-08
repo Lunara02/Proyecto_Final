@@ -9,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * La clase PanelCocina representa el panel donde se muestra la cocina del restaurante.
+ * Administra la interfaz para seleccionar ingredientes y realizar pedidos.
+ */
 public class PanelCocina extends JPanel implements ObserverCustom {
     private ArrayList<Image> CocinaUsuario;
     private ArrayList<Image> PedidoGenerado;
@@ -37,8 +41,10 @@ public class PanelCocina extends JPanel implements ObserverCustom {
     private ImageIcon imagenCocina;
     private int TipoC, TipoP;
 
+    /**
+     * Constructor que inicializa el panel de la cocina con botones de ingredientes y configuraciones visuales.
+     */
     public PanelCocina() {
-
         CocinaUsuario = new ArrayList<>();
         PedidoGenerado = new ArrayList<>();
         Enviar = new Boton(240, 110, 50, 50, 1);
@@ -132,6 +138,9 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         add(Pizza);
     }
 
+    /**
+     * Método para reiniciar la interfaz de selección de ingredientes.
+     */
     private void SeleccionBotonesPizzaHamburguesa(){
         CocinaUsuario.clear();
         cocina.quitarIngrediente();
@@ -141,6 +150,9 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         repaint();
     }
 
+    /**
+     * Método para ocultar todos los botones de ingredientes.
+     */
     private void quitarIngredientes() {
         Tomato.setVisible(false);
         lechuga.setVisible(false);
@@ -160,6 +172,9 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         salsatomate.setVisible(false);
     }
 
+    /**
+     * Método para mostrar solo los botones de ingredientes para hacer una hamburguesa.
+     */
     private void ingredientesHamburguesa() {
         Tomato.setVisible(true);
         lechuga.setVisible(true);
@@ -179,6 +194,9 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         salsatomate.setVisible(false);
     }
 
+    /**
+     * Método para mostrar solo los botones de ingredientes para hacer una pizza.
+     */
     private void ingredientesPizza() {
         Tomato.setVisible(false);
         lechuga.setVisible(false);
@@ -198,6 +216,11 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         salsatomate.setVisible(true);
     }
 
+    /**
+     * Método para cargar una imagen en un botón.
+     * @param button el botón donde se colocará la imagen.
+     * @param nombre el nombre del archivo de imagen.
+     */
     private void colocarImagen(JButton button, String nombre) {
         try {
             ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(nombre + ".png"));
@@ -207,11 +230,16 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         }
     }
 
+    /**
+     * Método para actualizar la interfaz cuando se genera un nuevo pedido.
+     */
     public void PedidoClientes() {
         PedidoGenerado.clear();
         try{
             cocina.getPedidos();
-            TipoP = cocina.getPedido().getTipo();
+            TipoP
+
+                    = cocina.getPedido().getTipo();
             for (Ingredientes ingrediente : cocina.getPedido().getReceta().getIngredientes()) {
                 System.out.println(ingrediente);
                 Image imagen = new ImageIcon(getClass().getClassLoader().getResource(ingrediente.getNombre() + ".png")).getImage();
@@ -223,14 +251,24 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         }
     }
 
+    /**
+     * Método de actualización para el patrón Observer.
+     */
     @Override
     public void update(){
         PedidoClientes();
     }
+
+    /**
+     * Método de actualización adicional para limpiar la lista de pedidos generados.
+     */
     public void update1(){
         PedidoGenerado.clear();
     }
 
+    /**
+     * Método para pintar componentes gráficos en el panel.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -273,5 +311,4 @@ public class PanelCocina extends JPanel implements ObserverCustom {
             }
         }
     }
-
 }
