@@ -38,7 +38,7 @@ public class PanelCocina extends JPanel implements ObserverCustom {
     private int TipoC, TipoP;
 
     public PanelCocina() {
-        
+
         CocinaUsuario = new ArrayList<>();
         PedidoGenerado = new ArrayList<>();
         Enviar = new Boton(240, 110, 50, 50, 1);
