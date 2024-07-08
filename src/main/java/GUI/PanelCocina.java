@@ -86,4 +86,23 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         blanca.setVisible(false);
         salsatomate.setVisible(false);
     }
+
+    private void ingredientesPizza() {
+        Tomato.setVisible(false);
+        lechuga.setVisible(false);
+        mayo.setVisible(false);
+        borgar.setVisible(false);
+        palto.setVisible(false);
+        kechu.setVisible(false);
+        panArr.setVisible(false);
+        panAbj.setVisible(false);
+        masa.setVisible(true);
+        blanca.setVisible(true);
+        champiñones.setVisible(true);
+        pimientos.setVisible(true);
+        Albahaca.setVisible(true);
+        Peperonni.setVisible(true);
+        Aceitunas.setVisible(true);
+        salsatomate.setVisible(true);
+    }
 }
