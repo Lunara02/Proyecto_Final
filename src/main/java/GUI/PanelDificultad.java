@@ -39,4 +39,9 @@ public class PanelDificultad extends JPanel{
             }
         });
     }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("salon.png"))).getImage(),0,0,this);
+    }
 }
