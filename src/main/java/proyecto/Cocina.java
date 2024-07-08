@@ -79,4 +79,8 @@ public class Cocina {
         }
         return false;
     }
+
+    public int getPuntuacion(){
+        return puntuacion;
+    }
 }
