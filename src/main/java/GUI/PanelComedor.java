@@ -69,4 +69,59 @@ public class PanelComedor extends JPanel{
     public  void comenzarTimer(){
         tiempoJuego.start();
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(imagenFondo.getImage(), 0, 0,this);
+        for (int X = 0; X < mesas.size(); X++) {
+            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("silla2.png"))).getImage(), mesas.get(X).getX() - 24, mesas.get(X).getY(), this);
+            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("silla1.png"))).getImage(), mesas.get(X).getX()  + 140 - 24, mesas.get(X).getY(), this);
+            g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("silla3.png"))).getImage(), mesas.get(X).getX() + 70 - 24, mesas.get(X).getY() - 30, this);
+            g.drawImage(imagenMesas.getImage(), mesas.get(X).getX(), mesas.get(X).getY(), this);
+            if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() >= 1){
+                g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX() + 52, mesas.get(X).getY() + 58, this);
+            }
+            for(int Y = 0; Y < mesas.get(X).getSillas().size(); Y ++){
+                if( Y == 0 ){
+                    if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() >= 1){
+                        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX() + 52, mesas.get(X).getY() + 58, this);
+                    }
+                }
+                if ( Y == 1 ) {
+                    if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() >= 2){
+                        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX() - 24, mesas.get(X).getY(), this);
+                    }
+                } else if ( Y == 2 ) {
+                    if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() >= 3){
+                        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX()  + 140 - 24, mesas.get(X).getY(), this);
+                    }
+
+                } else if ( Y == 3 ) {
+                    if (!mesas.get(X).getMesaDisponible() && mesas.get(X).getFamilia().getIntegrantes().size() == 4){
+                        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("cliente.png"))).getImage(), mesas.get(X).getX()  + 70 - 24, mesas.get(X).getY() - 30, this);
+                    }
+                }
+            }
+        }
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+        if (segundosRestantes == 60){
+            g.setColor(Color.RED);
+            Musica.getInstance().stopMusica();
+            Musica.getInstance().playMusica("entradarapida");
+        }
+        else if(segundosRestantes == 180){
+            g.setColor(Color.YELLOW);
+        }
+
+        g.drawString(segundosRestantes / 60 + ":" + String.format("%02d", segundosRestantes % 60), 65, 51);
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+        g.drawString(String.valueOf(Restaurante.getInstance().getCocina().getPuntuacion()), 65, 122);
+        progressBar.setMaximum(Restaurante.getInstance().getCuota());
+        progressBar.setValue(Restaurante.getInstance().getCocina().getPuntuacion());
+    }
 }
