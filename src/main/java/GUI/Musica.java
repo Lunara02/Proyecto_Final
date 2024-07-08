@@ -24,5 +24,10 @@ public class Musica {
             clip.close();
         }
     }
-
+    public static Musica getInstance() {
+        if (instance == null) {
+            instance = new Musica();
+        }
+        return instance;
+    }
 }
