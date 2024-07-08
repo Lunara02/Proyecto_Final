@@ -41,4 +41,8 @@ public class Mesa {
         familia = null;
         mesaDisponible = true;
     }
+
+    public boolean getMesaDisponible(){
+        return mesaDisponible;
+    }
 }
