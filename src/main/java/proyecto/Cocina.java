@@ -29,6 +29,10 @@ public class Cocina {
         return pedidos;
     }
 
+    public void limpiarPedidos(){
+        pedidos.clear();
+    }
+
     public void agregarIngredientes(Ingredientes ingredientes){
         cocinado.add(ingredientes);
     }
