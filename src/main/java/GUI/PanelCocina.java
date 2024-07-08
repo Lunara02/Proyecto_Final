@@ -139,4 +139,47 @@ public class PanelCocina extends JPanel implements ObserverCustom {
         PedidoGenerado.clear();
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(imagenCocina.getImage(), 0, 0, this);
+        if(TipoP == 1){
+            for (int x = 0; x < PedidoGenerado.size(); x++) {
+                g.drawImage(PedidoGenerado.get(x), 26, 177 - x * 17, this);
+            }
+        }
+        else if(TipoP == 2){
+            for (int x = 0; x < PedidoGenerado.size(); x++) {
+                if(PedidoGenerado.get(x).equals((new ImageIcon(getClass().getClassLoader().getResource("salsatomate.png"))).getImage())){
+                    g.drawImage(PedidoGenerado.get(x), 30, 120, this);
+                }
+                else if(PedidoGenerado.get(x).equals((new ImageIcon(getClass().getClassLoader().getResource("salsablanca.png"))).getImage())){
+                    g.drawImage(PedidoGenerado.get(x), 30, 80, this);
+                }
+                else{
+                    g.drawImage(PedidoGenerado.get(x), 21, 167, this);
+                }
+
+            }
+        }
+        if(TipoC == 1){
+            for (int x = 0; x < CocinaUsuario.size(); x++) {
+                g.drawImage(CocinaUsuario.get(x), 113, 312 - x * 15, this);
+            }
+        }
+        else if(TipoC == 2){
+            for (int x = 0; x < CocinaUsuario.size(); x++) {
+                if(CocinaUsuario.get(x).equals((new ImageIcon(getClass().getClassLoader().getResource("salsatomate2.png"))).getImage())){
+                    g.drawImage(CocinaUsuario.get(x), 175, 350, this);
+                }
+                else if(CocinaUsuario.get(x).equals((new ImageIcon(getClass().getClassLoader().getResource("salsablanca2.png"))).getImage())){
+                    g.drawImage(CocinaUsuario.get(x), 210, 350, this);
+                }
+                else {
+                    g.drawImage(CocinaUsuario.get(x), 72, 280, this);
+                }
+            }
+        }
+    }
+
 }
