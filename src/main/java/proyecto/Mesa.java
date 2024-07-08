@@ -33,4 +33,12 @@ public class Mesa {
         }
         return false;
     }
+
+    public void desocuparMesa(){
+        for(int i=0; i<sillas.size();i++){
+            sillas.get(i).desocupar();
+        }
+        familia = null;
+        mesaDisponible = true;
+    }
 }
