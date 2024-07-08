@@ -103,4 +103,8 @@ public class Restaurante {
     public int getCuota(){
         return cuota;
     }
+
+    public void limpiarClientes(){
+        clientes.clear();
+    }
 }
