@@ -114,4 +114,20 @@ public class PanelCocina extends JPanel implements ObserverCustom {
             e.printStackTrace();
         }
     }
+
+    public void PedidoClientes() {
+        PedidoGenerado.clear();
+        try{
+            cocina.getPedidos();
+            TipoP = cocina.getPedido().getTipo();
+            for (Ingredientes ingrediente : cocina.getPedido().getReceta().getIngredientes()) {
+                System.out.println(ingrediente);
+                Image imagen = new ImageIcon(getClass().getClassLoader().getResource(ingrediente.getNombre() + ".png")).getImage();
+                PedidoGenerado.add(imagen);
+            }
+            repaint();
+        } catch (nullPedidos e){
+            JOptionPane.showMessageDialog(null, "Todos los pedidos entregados", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 }
