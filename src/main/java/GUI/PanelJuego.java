@@ -28,7 +28,7 @@ public class PanelJuego extends JPanel {
             }
         });
     }
-    
+
     public void initialize(){
         llegada = new Timer(6000, new ActionListener() {
             @Override
@@ -47,5 +47,10 @@ public class PanelJuego extends JPanel {
         Restaurante.getInstance().getCocina().quitarIngrediente();
         Restaurante.getInstance().limpiarClientes();
         llegada.stop();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
     }
 }
