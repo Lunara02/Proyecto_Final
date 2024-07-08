@@ -5,15 +5,35 @@ import proyecto.Restaurante;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * La clase PanelFinal extiende JPanel y representa el panel que muestra los resultados finales del juego.
+ *
+ * @autor Sebastian Ignacio Vega Varela
+ */
 public class PanelFinal extends JPanel {
     private Sonido sonidoFinal;
     private String calificacion;
+
+    /**
+     * Constructor para crear un PanelFinal e inicializar sus componentes.
+     * Este constructor configura el panel final del juego e instancia sonidoFinal para reproducir sonido.
+     *
+     * @param mainFrame El panel principal que contiene este panel final.
+     */
     public PanelFinal(PanelPrincipal mainFrame){
         this.setLayout(new BorderLayout());
         this.setLayout(null);
         sonidoFinal = new Sonido();
         repaint();
     }
+
+    /**
+     * Sobrescribe el método paintComponent para dibujar el contenido personalizado del panel final.
+     * Este método dibuja la imagen de fondo del panel final y muestra la calificación y puntuación del juego,
+     * así como el sonido correspondiente según el resultado.
+     *
+     * @param g El objeto Graphics que se utiliza para dibujar el componente.
+     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("final.png"))).getImage(),0,0,this);
@@ -21,6 +41,7 @@ public class PanelFinal extends JPanel {
         int puntuacion = Restaurante.getInstance().getCocina().getPuntuacion();
         int cuota = Restaurante.getInstance().getCuota();
 
+        String calificacion;
 
         if (puntuacion > cuota * 2) {
             calificacion = "S";
