@@ -22,4 +22,8 @@ public class Familia extends Observer{
     public ArrayList<Cliente> getIntegrantes() {
         return integrantes;
     }
+
+    public boolean getFamiliaComiendo(){
+        return familiaComiendo;
+    }
 }
