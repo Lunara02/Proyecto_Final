@@ -25,4 +25,10 @@ public class PanelMenu extends JPanel {
             }
         });
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("rest.png"))).getImage(),0,0,this);
+    }
 }
